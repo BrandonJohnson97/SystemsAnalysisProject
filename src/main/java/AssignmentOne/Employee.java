@@ -27,7 +27,9 @@ public class Employee {
     public Employee(String firstName, String lastName, double monthlySalary) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.monthlySalary = monthlySalary;
+        if(monthlySalary > 0){
+            this.monthlySalary = monthlySalary;
+        }
     }
 
     /**
@@ -98,11 +100,14 @@ public class Employee {
         return getMonthlySalary() * 12;
     }
 
-    public void employeeRaise(double raise) {
-        if(raise > 0) {
-            this.monthlySalary += this.monthlySalary * (raise/100);
-        } else {
-            System.out.println("Raise must be a positive number!!!!");
+    /**
+     * Give employee a raise based on a double rate. A 15% raise would be given as 0.15. The rate will be added to 1
+     * and multipled by current monthly salary. A negative rate will not be applied.
+     * @param rate rate must be greater than zero
+     */
+    public void giveRaise(double rate){
+        if(rate > 0){
+            this.setMonthlySalary(this.getMonthlySalary()*(1+rate));
         }
     }
 }
