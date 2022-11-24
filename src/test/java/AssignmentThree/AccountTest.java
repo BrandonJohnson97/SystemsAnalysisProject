@@ -2,6 +2,10 @@ package AssignmentThree;
 
 import AssignmentOne.Account;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Random;
 
@@ -24,27 +28,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author 20168209
  */
 public class AccountTest {
-
-    Account account;
-    private static String DEFAULT_NAME = "Test Account";
+    private static String DEFAULT_NAME = "Pedro Lopez";
     private static double DEFAULT_BALANCE = 200.00;
+    Account account = new Account(DEFAULT_NAME, DEFAULT_BALANCE);
 
-    @BeforeAll
-    public static void beforeClass() {System.out.println("\nBeginning Account tests");}
-
-    @AfterAll
-    public static void afterClass() {System.out.println("\nAfter Account tests");}
-
-    @BeforeEach
-    public void before() {account = new Account(DEFAULT_NAME, DEFAULT_BALANCE);}
-
-    @AfterEach
-    public void after() {
-        System.out.printf("\nAccount name: %s Balance: %.2f", account.getName(), account.getBalance());
-    }
     @DisplayName("Test accounts get name")
     @Test
-    void getName(){
+    void getName() {
         assertEquals(DEFAULT_NAME, account.getName());
         final String name = "Edmund Kemper";
         account.setName(name);
@@ -53,7 +43,7 @@ public class AccountTest {
 
     @DisplayName("Test accounts set name")
     @Test
-    void setName(){
+    void setName() {
         final String name = "John Wayne Gacy";
         account.setName(name);
         assertEquals(name, account.getName());
@@ -61,46 +51,20 @@ public class AccountTest {
 
     @DisplayName("Test accounts get balance")
     @Test
-    void getBalance(){
+    void getBalance() {
         assertEquals(DEFAULT_BALANCE, account.getBalance());
     }
 
     @DisplayName("Test accounts constructor")
     @Test
-    void constructor(){
+    void constructor() {
         final double negativeBalance = -200;
         account = new Account(DEFAULT_NAME, negativeBalance);
         assertEquals(0, account.getBalance());
     }
+}
 
-    @DisplayName("Execution Procedure")
-    @Test
-    void procedure(){
-        Account procedureAccount;
-        String DEFAULT_NAME = "Execute Procedure";
-        double DEFAULT_BALANCE = 2000.00;
-
-        procedureAccount = new Account(DEFAULT_NAME, DEFAULT_BALANCE);
-
-        procedureAccount.credit(-500.00);
-        assertEquals(DEFAULT_BALANCE, procedureAccount.getBalance());
-
-        procedureAccount.credit(500.00);
-        assertEquals(2500.00, procedureAccount.getBalance());
-
-        procedureAccount.debit(-1000.00);
-        assertEquals(2500.00, procedureAccount.getBalance());
-
-        procedureAccount.debit(3500.00);
-        assertEquals(2500.00, procedureAccount.getBalance());
-
-        procedureAccount.debit(1000.00);
-        assertEquals(1500.00, procedureAccount.getBalance());
-
-        procedureAccount.reset();
-        assertEquals(0, procedureAccount.getBalance());
-
-    }
+//    }
 //    @DisplayName("Test accounts credit")
 //    @Test
 //    void credit(){
@@ -144,4 +108,4 @@ public class AccountTest {
 //        account.debit(66);
 //        assertEquals(33, account.getBalance());
 //        }
-}
+//}

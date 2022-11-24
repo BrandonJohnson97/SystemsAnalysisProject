@@ -6,6 +6,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
+ * Tester class for Employee class. Checks all getters/setters, negatives and giving a raise
  * <pre>
  *     Using the Employee class from the first Java assignment do the following:
  *  Do assertion tests on all setter / getter methods
@@ -17,26 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author 20168209
  */
 public class EmployeeTest {
-
-    Employee employee;
-
-    private static String DEFAULT_FIRST = "Test First";
-    private static String DEFAULT_LAST = "Test Last";
+    private static String DEFAULT_FIRST = "H.H";
+    private static String DEFAULT_LAST = "Holmes";
     private static double DEFAULT_SALARY = 1500.00;
-
-    @BeforeAll
-    public static void beforeClass() {System.out.println("\nBeginning Employee tests");}
-
-    @AfterAll
-    public static void afterClass() {System.out.println("\nAfter Employee tests");}
-
-    @BeforeEach
-    public void before() {employee = new Employee(DEFAULT_FIRST, DEFAULT_LAST, DEFAULT_SALARY);}
-
-    @AfterEach
-    public void after() {
-        System.out.printf("\nEmployee name: %s, %s Monthly Salary: %.2f", employee.getFirstName(), employee.getLastName(), employee.getMonthlySalary());
-    }
+    Employee employee = new Employee(DEFAULT_FIRST, DEFAULT_LAST, DEFAULT_SALARY);
 
     @DisplayName("Test Employees get first name")
     @Test
@@ -96,25 +81,25 @@ public class EmployeeTest {
         employee = new Employee(DEFAULT_FIRST, DEFAULT_LAST, negativeBalance);
         assertEquals(0, employee.getMonthlySalary());
     }
-    @DisplayName("Execution Procedure")
-    @Test
-    void procedure(){
-        Employee procedureEmployee;
-        String DEFAULT_FIRST = "Brandon";
-        String DEFAULT_LAST= "Johnson";
-        double DEFAULT_SALARY = 1500.00;
-
-        procedureEmployee = new Employee(DEFAULT_FIRST, DEFAULT_LAST, DEFAULT_SALARY);
-
-        assertEquals(DEFAULT_FIRST, procedureEmployee.getFirstName());
-
-        assertEquals(DEFAULT_LAST, procedureEmployee.getLastName());
-
-        assertEquals(DEFAULT_SALARY, procedureEmployee.getMonthlySalary());
-
-        procedureEmployee.giveRaise(5.0);
-        assertEquals(DEFAULT_SALARY*(1+5.0), procedureEmployee.getMonthlySalary());
-    }
+//    @DisplayName("Execution Procedure")
+//    @Test
+//    void procedure(){
+//        Employee procedureEmployee;
+//        String DEFAULT_FIRST = "Brandon";
+//        String DEFAULT_LAST= "Johnson";
+//        double DEFAULT_SALARY = 1500.00;
+//
+//        procedureEmployee = new Employee(DEFAULT_FIRST, DEFAULT_LAST, DEFAULT_SALARY);
+//
+//        assertEquals(DEFAULT_FIRST, procedureEmployee.getFirstName());
+//
+//        assertEquals(DEFAULT_LAST, procedureEmployee.getLastName());
+//
+//        assertEquals(DEFAULT_SALARY, procedureEmployee.getMonthlySalary());
+//
+//        procedureEmployee.giveRaise(5.0);
+//        assertEquals(DEFAULT_SALARY*(1+5.0), procedureEmployee.getMonthlySalary());
+//    }
 //    @DisplayName("Test employees raise")
 //    @Test
 //    void raise(){
