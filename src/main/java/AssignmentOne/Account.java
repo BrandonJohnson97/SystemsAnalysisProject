@@ -20,6 +20,7 @@ public class Account {
 
     /**
      *If balance is greater than 0 then balance is equal to param balance
+     * If name isn't empty, name is equal to param name
      *
      * @param name - String, account name
      * @param balance - Double, balance amount
@@ -85,10 +86,18 @@ public class Account {
             if(balance >= amount){
                 this.balance -= amount;
             } else {
-                System.err.println("Amount cannot be greater than balance.");
+                System.err.printf("\nAmount(%.2f) cannot be greater than balance(%.2f).", amount, balance);
             }
         } else {
-            System.err.println("Debit amount exceeded account balance.");
+            System.err.printf("\nDebit amount(%.2f) exceeded account balance(%.2f).", amount, balance);
         }
+    }
+
+    /**
+     * Reset the balance!
+     */
+    public void reset(){
+        //This method really shouldn't exist
+        this.balance = 0;
     }
 }
